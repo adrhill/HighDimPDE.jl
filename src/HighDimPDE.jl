@@ -58,7 +58,7 @@ module HighDimPDE
     end
 
     eltype(g(x)) == eltype(x) ? nothing : error("Type of `g(x)` not matching type of x")
-    eltype(f(x, x, g(x), g(x), 0f0, 0f0, tspan[1])) == eltype(x) ? nothing : error("Type of non linear function `f(x)` not matching type of x")
+    eltype(f(x, x, g, 0f0, tspan[1])) == eltype(x) ? nothing : error("Type of non linear function `f(x)` not matching type of x")
 
     PIDEProblem{typeof(g(x)),
                 NLFunction,
