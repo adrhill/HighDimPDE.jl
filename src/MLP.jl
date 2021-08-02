@@ -7,7 +7,7 @@ Multi level Picard algorithm for solving non local non linear PDES.
     integrations),
     * `K`: number of Monte Carlo integrations for the non local term    
     * `mc_sample::MCSampling` : sampling method for Monte Carlo integrations of the non local term.
-    Can be `UniformSampling(a,b)`, `NormalSampling(σ_sampling)`, or `NoSampling` (by default).
+    Can be `UniformSampling`, `NormalSampling`, or `NoSampling` (by default).
     """
 struct MLP <: HighDimPDEAlgorithm
     M::Int # nb of MC integrations
