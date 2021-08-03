@@ -76,7 +76,7 @@ function solve(
     N = length(ts) - 1
 
     # allocating
-    y1 = repeat(x0,1, batch_size)
+    y1 = repeat(x0, 1, batch_size)
     y0 = similar(y1)
     z = similar(x0, d, batch_size, K) # for MC non local integration
 

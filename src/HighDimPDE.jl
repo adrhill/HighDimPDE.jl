@@ -17,6 +17,19 @@ module HighDimPDE
     end
     (f::NLFunction)(args...) = f.f(args...)
 
+    struct PIDEProblem{uType,G,F,Mu,Sigma,xType,tType,P,UD,K} <: DiffEqBase.AbstractODEProblem{uType,tType,false}
+        u0::uType
+        g::G # initial condition
+        f::F # nonlinear part
+        μ::Mu
+        σ::Sigma
+        x::xType
+        tspan::tType
+        p::P
+        u_domain::UD
+        kwargs::K
+    end
+
     """
         PIDEProblem(g,f, μ, σ, x, tspan)
     A non local non linear PDE problem.
@@ -32,18 +45,6 @@ module HighDimPDE
     `u_domain[:,1] × u_domain[:,2]`. 
     * `x`: the point of the solution required
     """
-    struct PIDEProblem{uType,G,F,Mu,Sigma,xType,tType,P,UD,K} <: DiffEqBase.AbstractODEProblem{uType,tType,false}
-        u0::uType
-        g::G # initial condition
-        f::F # nonlinear part
-        μ::Mu
-        σ::Sigma
-        x::xType
-        tspan::tType
-        p::P
-        u_domain::UD
-        kwargs::K
-    end
 
     function PIDEProblem(g, f, μ, σ, tspan;
                                     p=nothing,
